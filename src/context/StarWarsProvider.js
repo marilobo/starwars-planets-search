@@ -1,10 +1,14 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import PropTypes from 'prop-types';
 import getAPIData from '../services/FetchAPI';
 import StarWarsContext from './StarWarsContext';
 
 function StarWarsProvider({ children }) {
   const [planets, setPlanets] = useState([]);
+  const [filters, setFilters] = useState({
+    name: '',
+  });
+  const [search, setSearch] = useState([]);
 
   const getPlanets = async () => {
     const sWPlanets = await getAPIData();
@@ -16,8 +20,16 @@ function StarWarsProvider({ children }) {
     getPlanets();
   }, []);
 
+  const value = useMemo(() => ({
+    planets,
+    filters,
+    search,
+    setFilters,
+    setSearch,
+  }), [planets, filters, search, setFilters, setSearch]);
+
   return (
-    <StarWarsContext.Provider value={ { planets } }>
+    <StarWarsContext.Provider value={ value }>
       { children }
     </StarWarsContext.Provider>
   );
