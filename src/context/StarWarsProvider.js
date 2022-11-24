@@ -5,9 +5,11 @@ import StarWarsContext from './StarWarsContext';
 
 function StarWarsProvider({ children }) {
   const [planets, setPlanets] = useState([]);
+  const [columnOptions, setColumnOptions] = useState(['population',
+    'orbital_period', 'diameter', 'rotation_period', 'surface_water']);
   const [filters, setFilters] = useState({
     name: '',
-    column: 'population',
+    column: columnOptions[0],
     comparison: 'maior que',
     value: 0,
   });
@@ -29,10 +31,13 @@ function StarWarsProvider({ children }) {
     filters,
     search,
     keepFilter,
+    columnOptions,
     setFilters,
     setSearch,
     setKeepFilter,
-  }), [planets, filters, search, keepFilter, setFilters, setSearch, setKeepFilter]);
+    setColumnOptions,
+  }), [planets, filters, search, keepFilter, columnOptions,
+    setFilters, setSearch, setKeepFilter]);
 
   return (
     <StarWarsContext.Provider value={ value }>

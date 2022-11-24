@@ -1,11 +1,9 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import StarWarsContext from '../context/StarWarsContext';
 
 function Forms() {
-  const { filters, setFilters, keepFilter, setKeepFilter } = useContext(StarWarsContext);
-
-  const columnOptions = ['population',
-    'orbital_period', 'diameter', 'rotation_period', 'surface_water'];
+  const { filters, setFilters, keepFilter, setKeepFilter,
+    columnOptions, setColumnOptions } = useContext(StarWarsContext);
 
   const handleInputValue = ({ target }) => {
     setFilters({ ...filters, [target.name]: target.value });
@@ -14,7 +12,17 @@ function Forms() {
   const addFilter = () => {
     const { name, ...rest } = filters;
     setKeepFilter([...keepFilter, rest]);
+    setColumnOptions(columnOptions.filter((e) => e !== filters.column));
   };
+
+  useEffect(() => {
+    setFilters({
+      name: '',
+      column: columnOptions[0],
+      comparison: 'maior que',
+      value: 0,
+    });
+  }, [columnOptions, setFilters]);
 
   return (
     <form>
