@@ -2,14 +2,19 @@ import React, { useContext } from 'react';
 import StarWarsContext from '../context/StarWarsContext';
 
 function Forms() {
-  const { filters, setFilters } = useContext(StarWarsContext);
+  const { filters, setFilters, keepFilter, setKeepFilter } = useContext(StarWarsContext);
+
+  const columnOptions = ['population',
+    'orbital_period', 'diameter', 'rotation_period', 'surface_water'];
 
   const handleInputValue = ({ target }) => {
     setFilters({ ...filters, [target.name]: target.value });
   };
 
-  const columnOptions = ['population',
-    'orbital_period', 'diameter', 'rotation_period', 'surface_water'];
+  const addFilter = () => {
+    const { name, ...rest } = filters;
+    setKeepFilter([...keepFilter, rest]);
+  };
 
   return (
     <form>
@@ -48,7 +53,14 @@ function Forms() {
         value={ filters.value }
         onChange={ handleInputValue }
       />
-      <button type="button" data-testid="button-filter">FILTRAR</button>
+      <button
+        type="button"
+        data-testid="button-filter"
+        onClick={ addFilter }
+      >
+        FILTRAR
+
+      </button>
     </form>
   );
 }

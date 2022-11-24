@@ -12,6 +12,7 @@ function StarWarsProvider({ children }) {
     value: 0,
   });
   const [search, setSearch] = useState([]);
+  const [keepFilter, setKeepFilter] = useState([]);
 
   const getPlanets = async () => {
     const sWPlanets = await getAPIData();
@@ -27,9 +28,11 @@ function StarWarsProvider({ children }) {
     planets,
     filters,
     search,
+    keepFilter,
     setFilters,
     setSearch,
-  }), [planets, filters, search, setFilters, setSearch]);
+    setKeepFilter,
+  }), [planets, filters, search, keepFilter, setFilters, setSearch, setKeepFilter]);
 
   return (
     <StarWarsContext.Provider value={ value }>

@@ -2,17 +2,34 @@ import React, { useContext, useEffect } from 'react';
 import StarWarsContext from '../context/StarWarsContext';
 
 function Table() {
-  const { planets, filters, search, setSearch } = useContext(StarWarsContext);
+  const { planets, filters, search, setSearch, keepFilter } = useContext(StarWarsContext);
 
   useEffect(() => {
     function filterPlanets() {
-      const filterByName = planets
+      let filterByName = planets
         .filter((e) => e.name.toUpperCase().includes(filters.name?.toUpperCase()));
+
+      keepFilter.forEach((filter) => {
+        const { value, column } = filter;
+        if (filter.comparison === 'maior que') {
+          filterByName = filterByName
+            .filter((movie) => Number(movie[column]) > Number(value));
+        }
+        if (filter.comparison === 'menor que') {
+          filterByName = filterByName
+            .filter((movie) => Number(movie[column]) < Number(value));
+        }
+        if (filter.comparison === 'igual a') {
+          filterByName = filterByName
+            .filter((movie) => Number(movie[column]) === Number(value));
+        }
+      });
+
       setSearch(filterByName);
     }
 
     filterPlanets();
-  }, [planets, filters, setSearch]);
+  }, [planets, filters, setSearch, keepFilter]);
 
   return (
     <table>
