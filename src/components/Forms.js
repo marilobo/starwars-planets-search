@@ -15,6 +15,10 @@ function Forms() {
     setColumnOptions(columnOptions.filter((e) => e !== filters.column));
   };
 
+  const removeAllFilters = () => {
+    setKeepFilter([]);
+  };
+
   useEffect(() => {
     setFilters({
       name: '',
@@ -66,8 +70,15 @@ function Forms() {
         data-testid="button-filter"
         onClick={ addFilter }
       >
-        FILTRAR
+        Filtrar
 
+      </button>
+      <button
+        type="button"
+        data-testid="button-remove-filters"
+        onClick={ removeAllFilters }
+      >
+        Remover
       </button>
     </form>
   );
