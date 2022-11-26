@@ -19,7 +19,6 @@ function StarWarsProvider({ children }) {
   const getPlanets = async () => {
     const sWPlanets = await getAPIData();
     setPlanets(sWPlanets);
-    console.log(sWPlanets);
   };
 
   useEffect(() => {
