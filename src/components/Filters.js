@@ -9,6 +9,7 @@ function Filters() {
     setKeepFilter(keepFilter.filter((f) => f.column !== target.name));
   };
 
+  // lógica do useEffect implementada graças à ajuda dos meus amigos André Fretta e Mariana Nascimento
   useEffect(() => {
     const arr = ['population', 'orbital_period', 'diameter',
       'rotation_period', 'surface_water'];
