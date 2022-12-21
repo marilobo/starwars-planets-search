@@ -1,13 +1,19 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import StarWarsContext from '../context/StarWarsContext';
 
 function Forms() {
   const { filters, setFilters, keepFilter, setKeepFilter,
-    columnOptions, setColumnOptions } = useContext(StarWarsContext);
+    columnOptions, setColumnOptions, search } = useContext(StarWarsContext);
+
+  // const [howToOrder, setHowToOrder] = useState('');
+  const [orderColumn, setOrderColumn] = useState('population');
 
   const handleInputValue = ({ target }) => {
     setFilters({ ...filters, [target.name]: target.value });
   };
+
+  const arr = ['population', 'orbital_period', 'diameter',
+    'rotation_period', 'surface_water'];
 
   const addFilter = () => {
     const { name, ...rest } = filters;
@@ -17,6 +23,10 @@ function Forms() {
 
   const removeAllFilters = () => {
     setKeepFilter([]);
+  };
+
+  const orderFilter = () => {
+    console.log(search[0][orderColumn]);
   };
 
   useEffect(() => {
@@ -29,8 +39,8 @@ function Forms() {
   }, [columnOptions, setFilters]);
 
   return (
-    <form>
-      <label htmlFor="name">
+    <form className="form-container">
+      <label htmlFor="name" className="name-input">
         Nome
         <input
           data-testid="name-filter"
@@ -40,79 +50,89 @@ function Forms() {
           onChange={ handleInputValue }
         />
       </label>
-      <select
-        data-testid="column-filter"
-        name="column"
-        onChange={ handleInputValue }
-        value={ filters.column }
-      >
-        {columnOptions.map((opt) => <option key={ opt } value={ opt }>{opt}</option>)}
-      </select>
-      <select
-        data-testid="comparison-filter"
-        name="comparison"
-        onChange={ handleInputValue }
-        value={ filters.comparison }
-      >
-        <option value="maior que">maior que</option>
-        <option value="menor que">menor que</option>
-        <option value="igual a">igual a</option>
-      </select>
-      <input
-        data-testid="value-filter"
-        type="number"
-        name="value"
-        value={ filters.value }
-        onChange={ handleInputValue }
-      />
-      <button
-        type="button"
-        data-testid="button-filter"
-        onClick={ addFilter }
-      >
-        Filtrar
-
-      </button>
-      <button
-        type="button"
-        data-testid="button-remove-filters"
-        onClick={ removeAllFilters }
-      >
-        Remover
-      </button>
-      <label htmlFor="order">
-        Ordenar
-        <select name="order" data-testid="column-sort">
+      <div>
+        <select
+          data-testid="column-filter"
+          name="column"
+          onChange={ handleInputValue }
+          value={ filters.column }
+        >
           {columnOptions.map((opt) => <option key={ opt } value={ opt }>{opt}</option>)}
         </select>
-      </label>
-      <label htmlFor="ASC">
+        <select
+          data-testid="comparison-filter"
+          name="comparison"
+          onChange={ handleInputValue }
+          value={ filters.comparison }
+        >
+          <option value="maior que">maior que</option>
+          <option value="menor que">menor que</option>
+          <option value="igual a">igual a</option>
+        </select>
         <input
-          id="ASC"
-          type="radio"
-          name="order-radio"
-          value="ASC"
-          data-testid="column-sort-input-asc"
+          data-testid="value-filter"
+          type="number"
+          name="value"
+          value={ filters.value }
+          onChange={ handleInputValue }
         />
-        Ascendente
-      </label>
-      <label htmlFor="DESC">
-        <input
-          id="DESC"
-          type="radio"
-          name="order-radio"
-          value="DESC"
-          data-testid="column-sort-input-desc"
-        />
-        Descendente
-      </label>
-      <button
-        type="button"
-        data-testid="column-sort-button"
-      >
-        Ordenar
+        <button
+          type="button"
+          data-testid="button-filter"
+          onClick={ addFilter }
+        >
+          Filtrar
 
-      </button>
+        </button>
+        <button
+          type="button"
+          data-testid="button-remove-filters"
+          onClick={ removeAllFilters }
+        >
+          Remover
+        </button>
+        <label htmlFor="order">
+          Ordenar
+          <select
+            name="order"
+            data-testid="column-sort"
+            value={ orderColumn }
+            onChange={ ({ target }) => setOrderColumn(target.value) }
+          >
+            {arr.map((opt) => <option key={ opt } value={ opt }>{opt}</option>)}
+          </select>
+        </label>
+        <label htmlFor="ASC">
+          <input
+            id="ASC"
+            type="radio"
+            name="order-radio"
+            value="ASC"
+            data-testid="column-sort-input-asc"
+            onChange={ ({ target }) => setHowToOrder(target.value) }
+          />
+          Ascendente
+        </label>
+        <label htmlFor="DESC">
+          <input
+            id="DESC"
+            type="radio"
+            name="order-radio"
+            value="DESC"
+            data-testid="column-sort-input-desc"
+            onChange={ ({ target }) => setHowToOrder(target.value) }
+          />
+          Descendente
+        </label>
+        <button
+          type="button"
+          data-testid="column-sort-button"
+          onClick={ orderFilter }
+        >
+          Ordenar
+
+        </button>
+      </div>
     </form>
   );
 }
