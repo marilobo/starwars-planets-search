@@ -80,6 +80,39 @@ function Forms() {
       >
         Remover
       </button>
+      <label htmlFor="order">
+        Ordenar
+        <select name="order" data-testid="column-sort">
+          {columnOptions.map((opt) => <option key={ opt } value={ opt }>{opt}</option>)}
+        </select>
+      </label>
+      <label htmlFor="ASC">
+        <input
+          id="ASC"
+          type="radio"
+          name="order-radio"
+          value="ASC"
+          data-testid="column-sort-input-asc"
+        />
+        Ascendente
+      </label>
+      <label htmlFor="DESC">
+        <input
+          id="DESC"
+          type="radio"
+          name="order-radio"
+          value="DESC"
+          data-testid="column-sort-input-desc"
+        />
+        Descendente
+      </label>
+      <button
+        type="button"
+        data-testid="column-sort-button"
+      >
+        Ordenar
+
+      </button>
     </form>
   );
 }
