@@ -2,10 +2,10 @@ import React, { useContext, useEffect, useState } from 'react';
 import StarWarsContext from '../context/StarWarsContext';
 
 function Forms() {
-  const { filters, setFilters, keepFilter, setKeepFilter,
-    columnOptions, setColumnOptions, search } = useContext(StarWarsContext);
+  const { filters, setFilters, keepFilter, setKeepFilter, setSearch,
+    columnOptions, setColumnOptions, planets } = useContext(StarWarsContext);
 
-  // const [howToOrder, setHowToOrder] = useState('');
+  const [howToOrder, setHowToOrder] = useState('');
   const [orderColumn, setOrderColumn] = useState('population');
 
   const handleInputValue = ({ target }) => {
@@ -26,7 +26,16 @@ function Forms() {
   };
 
   const orderFilter = () => {
-    console.log(search[0][orderColumn]);
+    // const filteredSort = search;
+    if (howToOrder === 'ASC') {
+      setSearch(planets.sort((a, b) => a[orderColumn] - b[orderColumn]));
+      console.log(howToOrder);
+    } else if (howToOrder === 'DESC') {
+      setSearch(planets.sort((a, b) => b[orderColumn] - a[orderColumn]));
+      console.log(howToOrder);
+    //   console.log(filteredSort);
+    }
+    // setSearch(filteredSort);
   };
 
   useEffect(() => {
@@ -50,7 +59,7 @@ function Forms() {
           onChange={ handleInputValue }
         />
       </label>
-      <div>
+      <div className="inputs-container">
         <select
           data-testid="column-filter"
           name="column"
