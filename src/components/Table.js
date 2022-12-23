@@ -32,9 +32,9 @@ function Table() {
   }, [planets, filters, setSearch, keepFilter]);
 
   return (
-    <table>
+    <table className="table-container">
       <thead>
-        <tr>
+        <tr className="table-head">
           <th>Name</th>
           <th>Rotation Period</th>
           <th>Orbital Period</th>
@@ -50,7 +50,7 @@ function Table() {
           <th>URL</th>
         </tr>
       </thead>
-      <tbody>
+      <tbody className="table-cells">
         { search.map((planet) => (
           <tr key={ planet.name }>
             <td data-testid="planet-name">{ planet.name }</td>

@@ -25,6 +25,7 @@ body {
   border: 1px solid white;
   border-radius: 5px;
   height: 40px;
+  padding-left: 10px;
   width: 500px;
 }
 
@@ -34,6 +35,11 @@ body {
   flex-direction: column;
   justify-content: center;
   margin-top: 100px;
+}
+
+.inputs-container {
+  margin-bottom: 25px;
+  margin-top: 20px;
 }
 
 .inputs-container button {
@@ -52,6 +58,12 @@ body {
   -webkit-text-stroke: rgba(255, 252, 64, 0.772) 0.5px;
 }
 
+.inputs-container button:active {
+  border: 2px solid rgb(255, 227, 56);
+  filter: drop-shadow(4px 4px 5px rgba(240, 61, 246, 0.772));
+  -webkit-text-stroke: rgba(210, 64, 255, 0.772) 0.5px;
+}
+
 .inputs-container input {
   border: 1px solid white;
   border-radius: 5px;
@@ -68,6 +80,48 @@ body {
   border-top-style: none;
   font-weight: 600;
   margin: 10px;
+}
+
+.keep-filter {
+  display: flex;
+  justify-content: start;
+}
+
+.keep-filter * {
+  color: white;
+  font-size: 13pt;
+  font-weight: 700;
+  padding: 6px;
+}
+
+.table-head * {
+  background-color: rgba(255, 255, 255, 0.37);
+  padding: 10px;
+}
+
+.table-cells * {
+  font-size: 13pt;
+  padding: 7px;
+  text-align: center;
+}
+
+.order-inputs input {
+  position: relative;
+  top: 10px;
+}
+
+.table-container {
+  border: 1px solid white;
+  border-radius: 5px;
+  overflow: auto;
+  padding: 10px;
+  width: 1500px;
+}
+
+.clear-filter-btn {
+  background-color: transparent;
+  border: none;
+  color: red;
 }
 
 .letters *:hover {

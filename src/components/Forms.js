@@ -111,28 +111,30 @@ function Forms() {
             {arr.map((opt) => <option key={ opt } value={ opt }>{opt}</option>)}
           </select>
         </label>
-        <label htmlFor="ASC">
-          <input
-            id="ASC"
-            type="radio"
-            name="order-radio"
-            value="ASC"
-            data-testid="column-sort-input-asc"
-            onChange={ ({ target }) => setHowToOrder(target.value) }
-          />
-          Ascendente
-        </label>
-        <label htmlFor="DESC">
-          <input
-            id="DESC"
-            type="radio"
-            name="order-radio"
-            value="DESC"
-            data-testid="column-sort-input-desc"
-            onChange={ ({ target }) => setHowToOrder(target.value) }
-          />
-          Descendente
-        </label>
+        <span className="order-inputs">
+          <label htmlFor="ASC">
+            <input
+              id="ASC"
+              type="radio"
+              name="order-radio"
+              value="ASC"
+              data-testid="column-sort-input-asc"
+              onChange={ ({ target }) => setHowToOrder(target.value) }
+            />
+            Ascendente
+          </label>
+          <label htmlFor="DESC">
+            <input
+              id="DESC"
+              type="radio"
+              name="order-radio"
+              value="DESC"
+              data-testid="column-sort-input-desc"
+              onChange={ ({ target }) => setHowToOrder(target.value) }
+            />
+            Descendente
+          </label>
+        </span>
         <button
           type="button"
           data-testid="column-sort-button"

@@ -25,11 +25,12 @@ function Filters() {
   return (
     <div>
       { keepFilter.map((f) => (
-        <span data-testid="filter" key={ f.column }>
+        <span data-testid="filter" className="keep-filter" key={ f.column }>
           <span>{ `${f.column} ` }</span>
           <span>{ `${f.comparison} ` }</span>
           <span>{ `${f.value} ` }</span>
           <button
+            className="clear-filter-btn"
             type="button"
             onClick={ deleteBtn }
             name={ f.column }
