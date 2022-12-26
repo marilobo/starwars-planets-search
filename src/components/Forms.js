@@ -50,35 +50,50 @@ function Forms() {
   return (
     <form className="form-container">
       <label htmlFor="name" className="name-input">
-        Nome
         <input
           data-testid="name-filter"
           name="name"
           id="name"
           value={ filters.name }
           onChange={ handleInputValue }
+          placeholder="Pesquisar planeta"
         />
       </label>
       <div className="inputs-container">
-        <select
-          data-testid="column-filter"
-          name="column"
-          onChange={ handleInputValue }
-          value={ filters.column }
-        >
-          {columnOptions.map((opt) => <option key={ opt } value={ opt }>{opt}</option>)}
-        </select>
-        <select
-          data-testid="comparison-filter"
-          name="comparison"
-          onChange={ handleInputValue }
-          value={ filters.comparison }
-        >
-          <option value="maior que">maior que</option>
-          <option value="menor que">menor que</option>
-          <option value="igual a">igual a</option>
-        </select>
+        <label htmlFor="column" className="order-sort">
+          Coluna
+          <select
+            data-testid="column-filter"
+            name="column"
+            onChange={ handleInputValue }
+            value={ filters.column }
+          >
+            {columnOptions.map((opt) => (
+              <option
+                key={ opt }
+                value={ opt }
+                className="options"
+              >
+                {opt}
+              </option>
+            ))}
+          </select>
+        </label>
+        <label htmlFor="comparison" className="order-sort">
+          Operador
+          <select
+            data-testid="comparison-filter"
+            name="comparison"
+            onChange={ handleInputValue }
+            value={ filters.comparison }
+          >
+            <option className="options" value="maior que">maior que</option>
+            <option className="options" value="menor que">menor que</option>
+            <option className="options" value="igual a">igual a</option>
+          </select>
+        </label>
         <input
+          className="number-input"
           data-testid="value-filter"
           type="number"
           name="value"
@@ -100,7 +115,7 @@ function Forms() {
         >
           Remover
         </button>
-        <label htmlFor="order">
+        <label htmlFor="order" className="order-sort">
           Ordenar
           <select
             name="order"
@@ -108,7 +123,9 @@ function Forms() {
             value={ orderColumn }
             onChange={ ({ target }) => setOrderColumn(target.value) }
           >
-            {arr.map((opt) => <option key={ opt } value={ opt }>{opt}</option>)}
+            {arr.map((opt) => (
+              <option className="options" key={ opt } value={ opt }>{opt}</option>
+            ))}
           </select>
         </label>
         <span className="order-inputs">

@@ -1,5 +1,6 @@
 import React, { useContext, useEffect } from 'react';
 import StarWarsContext from '../context/StarWarsContext';
+import delBtn from '../images/delete-btn.svg';
 
 function Filters() {
   const { keepFilter, setKeepFilter,
@@ -29,15 +30,14 @@ function Filters() {
           <span>{ `${f.column} ` }</span>
           <span>{ `${f.comparison} ` }</span>
           <span>{ `${f.value} ` }</span>
-          <button
+          <input
+            src={ delBtn }
+            alt="Deletar"
             className="clear-filter-btn"
-            type="button"
+            type="image"
             onClick={ deleteBtn }
             name={ f.column }
-          >
-            apagar
-
-          </button>
+          />
         </span>)) }
     </div>
   );
