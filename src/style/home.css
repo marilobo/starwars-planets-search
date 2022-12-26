@@ -61,12 +61,12 @@ body {
   width: 70px;
 }
 
-.inputs-container button:hover {
+.inputs-container button:enabled:hover {
   filter: drop-shadow(4px 4px 5px rgba(246, 144, 61, 0.772));
   -webkit-text-stroke: rgba(255, 252, 64, 0.772) 0.5px;
 }
 
-.inputs-container button:active {
+.inputs-container button:enabled:active {
   border: 2px solid rgb(255, 227, 56);
   filter: drop-shadow(4px 4px 5px rgba(240, 61, 246, 0.772));
   -webkit-text-stroke: rgba(210, 64, 255, 0.772) 0.5px;
@@ -151,7 +151,7 @@ body {
 }
 
 ::placeholder {
-  color: white;
+  color: rgb(206, 206, 206);
 }
 
 .order-sort {
@@ -164,4 +164,9 @@ body {
 
 .number-input {
   width: 70px;
+}
+
+.filter-btn:disabled {
+  border-color: rgb(206, 206, 206);
+  color: rgb(206, 206, 206);
 }

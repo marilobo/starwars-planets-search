@@ -102,8 +102,10 @@ function Forms() {
         />
         <button
           type="button"
+          className="filter-btn"
           data-testid="button-filter"
           onClick={ addFilter }
+          disabled={ (columnOptions.length <= 0) }
         >
           Filtrar
 
