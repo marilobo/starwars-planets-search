@@ -89,4 +89,35 @@ describe('Bloco de testes de inputs e botões', () => {
     userEvent.click(clearBtn[0]);
     expect(clearBtn[0]).not.toBeInTheDocument();
   });
+  
+  it('Testa a função de ordenar', async () => {
+    render(<App />)
+
+    const columnSort = screen.getByTestId('column-sort');
+    expect(columnSort).toBeInTheDocument();
+
+    const ascSort = screen.getByTestId('column-sort-input-asc');
+    expect(ascSort).toBeInTheDocument();
+
+    const descSort = screen.getByTestId('column-sort-input-desc');
+    expect(descSort).toBeInTheDocument();
+
+    const sortBtn = screen.getByTestId('column-sort-button');
+    expect(sortBtn).toBeInTheDocument();
+
+    const planetsList = await screen.findAllByTestId('planet-name');
+    expect(planetsList[0]).toHaveTextContent(/tatooine/i);
+
+    userEvent.click(ascSort);
+    userEvent.click(sortBtn);
+
+    const planetsList2 = await screen.findAllByTestId('planet-name');
+    expect(planetsList2[0]).toHaveTextContent(/yavin/i);
+
+    userEvent.click(descSort);
+    userEvent.click(sortBtn);
+
+    const planetsList3 = await screen.findAllByTestId('planet-name');
+    expect(planetsList3[0]).toHaveTextContent(/Coruscant/i);
+  });
 });
