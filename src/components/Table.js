@@ -2,7 +2,8 @@ import React, { useContext, useEffect } from 'react';
 import StarWarsContext from '../context/StarWarsContext';
 
 function Table() {
-  const { planets, filters, search, setSearch, keepFilter } = useContext(StarWarsContext);
+  const { planets, filters, search, setSearch,
+    keepFilter, update } = useContext(StarWarsContext);
 
   useEffect(() => {
     function filterPlanets() {
@@ -29,7 +30,7 @@ function Table() {
     }
 
     filterPlanets();
-  }, [planets, filters, setSearch, keepFilter]);
+  }, [planets, filters, setSearch, keepFilter, update]);
 
   return (
     <table className="table-container">

@@ -3,7 +3,8 @@ import StarWarsContext from '../context/StarWarsContext';
 
 function Forms() {
   const { filters, setFilters, keepFilter, setKeepFilter, setSearch,
-    columnOptions, setColumnOptions, planets } = useContext(StarWarsContext);
+    columnOptions, setColumnOptions, planets,
+    update, setUpdate } = useContext(StarWarsContext);
 
   const [howToOrder, setHowToOrder] = useState('');
   const [orderColumn, setOrderColumn] = useState('population');
@@ -26,16 +27,15 @@ function Forms() {
   };
 
   const orderFilter = () => {
-    // const filteredSort = search;
-    if (howToOrder === 'ASC') {
-      setSearch(planets.sort((a, b) => a[orderColumn] - b[orderColumn]));
-      console.log(howToOrder);
-    } else if (howToOrder === 'DESC') {
-      setSearch(planets.sort((a, b) => b[orderColumn] - a[orderColumn]));
-      console.log(howToOrder);
-    //   console.log(filteredSort);
-    }
-    // setSearch(filteredSort);
+    const menosUm = -1;
+    setSearch(planets.sort((a, b) => {
+      if (a[orderColumn] === 'unknown') return 1;
+      if (b[orderColumn] === 'unknown') return menosUm;
+      if (howToOrder === 'ASC') return a[orderColumn] - b[orderColumn];
+      if (howToOrder === 'DESC') return b[orderColumn] - a[orderColumn];
+      return 0;
+    }));
+    setUpdate(!update);
   };
 
   useEffect(() => {
