@@ -7,7 +7,8 @@
 
 body {
   background-image: url('../images/bg.jpg');
-  background-size: cover;
+  background-repeat: repeat;
+  background-size: contain;
 }
 
 .form-container {
@@ -24,9 +25,14 @@ body {
 .name-input * {
   border: 1px solid white;
   border-radius: 5px;
+  display: block;
   height: 40px;
   padding-left: 10px;
   width: 500px;
+}
+
+:focus {
+  color: rgb(255, 227, 56);
 }
 
 .main-container {
@@ -38,6 +44,8 @@ body {
 }
 
 .inputs-container {
+  align-items: center;
+  display: flex;
   margin-bottom: 25px;
   margin-top: 20px;
 }
@@ -53,12 +61,12 @@ body {
   width: 70px;
 }
 
-.inputs-container button:hover {
+.inputs-container button:enabled:hover {
   filter: drop-shadow(4px 4px 5px rgba(246, 144, 61, 0.772));
   -webkit-text-stroke: rgba(255, 252, 64, 0.772) 0.5px;
 }
 
-.inputs-container button:active {
+.inputs-container button:enabled:active {
   border: 2px solid rgb(255, 227, 56);
   filter: drop-shadow(4px 4px 5px rgba(240, 61, 246, 0.772));
   -webkit-text-stroke: rgba(210, 64, 255, 0.772) 0.5px;
@@ -69,7 +77,8 @@ body {
   border-radius: 5px;
   font-weight: 600;
   height: 30px;
-  margin: 10px;
+  margin-left: 10px;
+  margin-right: 10px;
   padding-left: 15px;
 }
 
@@ -105,9 +114,16 @@ body {
   text-align: center;
 }
 
-.order-inputs input {
-  position: relative;
-  top: 10px;
+.order-inputs {
+  display: flex;
+  flex-direction: column;
+}
+
+.order-inputs * {
+  align-items: center;
+  display: flex;
+  margin-right: 10px;
+  margin-top: 4px;
 }
 
 .table-container {
@@ -118,12 +134,39 @@ body {
 }
 
 .clear-filter-btn {
-  background-color: transparent;
-  border: none;
-  color: red;
+  bottom: 2px;
+  position: relative;
+  width: 32px;
+}
+
+.options {
+  background-color: black;
+  color: rgb(255, 227, 56);
+  font-weight: 700;
 }
 
 .letters *:hover {
   transform: translateY(-2.5px);
   transition: 500ms;
+}
+
+::placeholder {
+  color: rgb(206, 206, 206);
+}
+
+.order-sort {
+  align-items: baseline;
+  color: rgb(206, 206, 206);
+  display: flex;
+  flex-direction: column;
+  font-size: small;
+}
+
+.number-input {
+  width: 70px;
+}
+
+.filter-btn:disabled {
+  border-color: rgb(206, 206, 206);
+  color: rgb(206, 206, 206);
 }
