@@ -1,13 +1,27 @@
-# :construction: README customizado em construção ! :construction:
-<!-- Olá, Tryber!
-Esse é apenas um arquivo inicial para o README do seu projeto no qual você pode customizar e reutilizar todas as vezes que for executar o trybe-publisher.
+# Star Wars Search Planets
+Este é um projeto desenvolvido durante o módulo de Front-end do curso de Desenvolvimento Web da Trybe. Para o seu desenvolvimento, utilizamos React, React Hooks, Context API e React Testing Library.
 
-Para deixá-lo com a sua cara, basta alterar o seguinte arquivo da sua máquina: ~/.student-repo-publisher/custom/_NEW_README.md
+<strong>As pastas components, context, images, pages, services, style e tests, assim como seus conteúdos, foram desenvolvidos por mim. O restante da aplicação é de autoria da Trybe.</strong>
 
-É essencial que você preencha esse documento por conta própria, ok?
-Não deixe de usar nossas dicas de escrita de README de projetos, e deixe sua criatividade brilhar!
-:warning: IMPORTANTE: você precisa deixar nítido:
-- quais arquivos/pastas foram desenvolvidos por você; 
-- quais arquivos/pastas foram desenvolvidos por outra pessoa estudante;
-- quais arquivos/pastas foram desenvolvidos pela Trybe.
--->
+## O que foi desenvolvido
+
+Neste projeto foi desenvolvida uma lista com filtros de planetas do universo de Star Wars usando Context API e Hooks para controlar os estados globais.
+<details>
+<summary><strong>Habilidades</strong></summary><br />
+
+* Utilizar a Context API do React para gerenciar estado.
+* Utilizar o React Hook useState;
+* Utilizar o React Hook useContext;
+* Utilizar o React Hook useEffect;
+* Criar React Hooks customizados.
+* Escrever testes para garantir que sua aplicação possua uma boa cobertura de testes.
+</details>
+<details>
+<summary><strong>Instalação</strong></summary><br />
+
+1. Clone o repositório
+  - Use o comando: `git clone git@github.com:marilobo/starwars-planets-search.git`.
+  - Entre na pasta do repositório que você acabou de clonar.
+2. Instale as dependências
+ - `npm install`.
+</details>
