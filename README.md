@@ -1,4 +1,7 @@
 # Star Wars Planets Search
+
+https://starwars-planets-search-sigma.vercel.app/
+
 Este é um projeto desenvolvido durante o módulo de Front-end do curso de Desenvolvimento Web da Trybe. Para o seu desenvolvimento, utilizamos React, React Hooks, Context API e React Testing Library.
 
 <strong>As pastas components, context, images, pages, services, style e tests, assim como seus conteúdos, foram desenvolvidos por mim. O restante da aplicação é de autoria da Trybe.</strong>
