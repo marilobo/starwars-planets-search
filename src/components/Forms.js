@@ -65,6 +65,7 @@ function Forms() {
           <select
             data-testid="column-filter"
             name="column"
+            id="column"
             onChange={ handleInputValue }
             value={ filters.column }
           >
@@ -83,6 +84,7 @@ function Forms() {
           Operador
           <select
             data-testid="comparison-filter"
+            id="comparison"
             name="comparison"
             onChange={ handleInputValue }
             value={ filters.comparison }
